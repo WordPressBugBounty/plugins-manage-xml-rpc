@@ -1,10 +1,10 @@
-=== Plugin Name ===
+=== Manage XML-RPC ===
 Contributors: brainvireinfo
 Donate link: http://www.brainvire.com
-Tags: xmlrpc, security, xmlrpc.php attack, brute force attacks, xml-rpc pingback, block xml-rpc
+Tags: security, xmlrpc.php attack, brute force attacks, xml-rpc pingback, block xml-rpc
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 5.3
+Tested up to: 6.7.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,10 @@ You can copy and paste new rule in your .htaccess file from plugin setting page.
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.0.2 =
+1. Fixed bugs and conducted compatibility checks with the latest WordPress version 6.7.1.
+2. Resolved warnings and errors identified during the compatibility assessment.
 
 = 1.0.1 =
 * Beta release with basic testing.

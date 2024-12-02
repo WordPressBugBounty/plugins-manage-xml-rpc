@@ -3,10 +3,11 @@
  * Plugin Name: Manage XML-RPC
  * Plugin URI: http://www.brainvire.com
  * Description: Disable XML-RPC for IP-specific control and disable XML-RPC Pingback method.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: brainvireinfo
  * Author URI: http://www.brainvire.com
  * License: GPL2
+ * Text Domain: manage-xml-rpc
  *
  * @package manage-xml-rpc
  */
@@ -318,6 +319,22 @@ function mxr_htaccess_contents( $rules ) {
 }
 
 add_filter( 'mod_rewrite_rules', 'mxr_htaccess_contents' );
+
+ /**
+ * Fallback for disabling the xmlrpc if .htaccess not working
+ * 
+ * @param string $class The name of the XML-RPC server class.
+ * @return string The same class name if conditions doesn't match.
+ */
+function mxr_disable_wp_xmlrpc($class)
+{
+	if ( esc_attr( get_option( 'allow_disallow' ) ) == 'disallow' ) {
+		http_response_code(403);
+		exit("Access Forbidden! You don't have permission to access this file.");
+	}
+	return $class;
+}
+add_filter('wp_xmlrpc_server_class', 'mxr_disable_wp_xmlrpc');
 
 /**
  * Extracts a specific section from an array of .htaccess rules.
